@@ -1,0 +1,105 @@
+/* Estilos para navbar.component.css */
+.navbar-toolbar {
+  background-color: #001b3f;
+  color: white;
+  padding: 0 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 64px;
+}
+
+/* Estilo para o título */
+.navbar-toolbar span:first-child {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Estilo para o botão do menu */
+button[mat-icon-button] {
+  margin-right: 8px;
+  color: white;
+}
+
+/* Hover effect para o botão do menu */
+button[mat-icon-button]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo para o botão de logout */
+button[mat-raised-button] {
+  background-color: #d83b01; /* Cor warn do azure theme */
+  color: white;
+  font-weight: 500;
+  padding: 0 16px;
+  height: 36px;
+  transition: all 0.2s ease;
+}
+
+button[mat-raised-button]:hover {
+  background-color: #a32d01;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ::ng-deep .mat-mdc-menu-panel {
+  background-color: red !important;
+} */
+
+/* Estilos para o menu */
+::ng-deep .mat-mdc-menu-panel {
+  border-radius: 4px !important;
+  margin-top: 8px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos para os itens do menu */
+::ng-deep .mat-mdc-menu-item {
+  font-size: 0.9rem !important;
+  height: 48px !important;
+  line-height: 48px !important;
+}
+
+/* Estilo para o item de menu ativo não está funcionando*/
+::ng-deep .mat-mdc-menu-item.router-link-active,
+::ng-deep .mat-mdc-menu-item.active {
+  background-color: rgba(0, 120, 212, 0.1) !important;
+  color: #0078d4 !important;
+}
+
+/* Hover nos itens do menu */
+::ng-deep .mat-mdc-menu-item.router-link-active {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .navbar-toolbar {
+    height: 56px;
+    padding: 0 8px;
+  }
+
+  .navbar-toolbar span:first-child {
+    font-size: 1.1rem;
+  }
+
+  button[mat-raised-button] {
+    padding: 0 12px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+}

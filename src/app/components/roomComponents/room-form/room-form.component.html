@@ -1,0 +1,38 @@
+<div class="room-form-container">
+  <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Room Name</mat-label>
+        <input matInput formControlName="name" required />
+        @if (roomForm.get('name')?.hasError('required')) {
+            <mat-error> Name is required </mat-error>
+        } @else if (roomForm.get('name')?.hasError('maxlength')) {
+            <mat-error> Maximum name length is 65 </mat-error>
+        }
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        @if (roomForm.get('description')?.hasError('maxlength')) {
+            <mat-error> Maximum description length is 254 </mat-error>
+        }
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+        @if (roomForm.get('notes')?.hasError('maxlength')) {
+            <mat-error> Maximum notes length is 65 </mat-error>
+        }
+      </mat-form-field>
+    
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!roomForm.valid"
+      >
+        {{ buttonMsg }}
+      </button>
+    </form>
+</div>

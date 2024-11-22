@@ -1,0 +1,52 @@
+/* Estilos para o componente da tabela (items.component.css) */
+:host {
+  display: block;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  background: white;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  router-outlet + * {
+    padding: 76px 16px 76px 16px; /* Ajuste para mobile */
+  }
+
+  .navbar-toolbar,
+  .footer-toolbar {
+    height: 56px;
+  }
+
+  table {
+    overflow-x: auto;
+    display: block;
+  }
+}
+
+/* Melhorias opcionais para a tabela */
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.mat-row:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Para tabelas com muitas colunas */
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}

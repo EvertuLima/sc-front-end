@@ -1,0 +1,21 @@
+<div class="user-profile-container">
+  @if (isLoading$ | async) {
+    <div class="loading-container">
+      <ng-container>Carregando...</ng-container>
+    </div>
+  }
+
+  @if (user$ | async; as user) {
+    <div class="profile-header">
+      <h3 class="user-name">{{ user.first_name }} {{ user.last_name }}</h3>
+      <p class="user-email">
+        <mat-icon>email</mat-icon>
+        {{ user.email }}
+      </p>
+    </div>
+    
+    <div class="rooms-section">
+      <app-room-list [userId]="user.id"></app-room-list>
+    </div>
+  }
+</div>

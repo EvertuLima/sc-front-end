@@ -1,0 +1,62 @@
+<div class="item-form-container">
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Inventory Number</mat-label>
+      <input matInput formControlName="inventory_number" />
+      @if (itemForm.get('inventory_number')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 65 </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      @if (itemForm.get('description')?.hasError('required')) {
+      <mat-error> Description is required </mat-error>
+      } @else if (itemForm.get('description')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 254 </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Brand</mat-label>
+      <input matInput formControlName="brand" />
+      @if (itemForm.get('brand')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 65 </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Model</mat-label>
+      <input matInput formControlName="model" />
+      @if (itemForm.get('model')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 65 </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Condition</mat-label>
+      <input matInput formControlName="condition" />
+      @if (itemForm.get('condition')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 65 </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Notes</mat-label>
+      <input matInput formControlName="notes" />
+      @if (itemForm.get('notes')?.hasError('maxlength')) {
+      <mat-error> Maximum length is 65 </mat-error>
+      }
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!itemForm.valid"
+    >
+      {{ buttonMsg }}
+    </button>
+  </form>
+</div>

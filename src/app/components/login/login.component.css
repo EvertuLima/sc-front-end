@@ -1,0 +1,100 @@
+/* Container principal */
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f7ff; /* Tom mais suave de azul para o fundo */
+}
+
+/* Container do form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.1); /* Sombra com tom de azul */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Estilo para os campos de input */
+mat-form-field {
+  width: 100%;
+}
+
+/* Estilo para os botões */
+button[type="submit"] {
+  width: 100%;
+  margin-top: 1rem;
+  height: 45px;
+  font-size: 16px;
+  /* A cor primária será automaticamente aplicada pelo tema azure-blue */
+}
+
+button[type="submit"]:disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* Estilo para o botão de registro */
+button[mat-stroked-button] {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1rem;
+  height: 45px;
+  font-size: 16px;
+  border-color: #0078d4; /* Cor do azure-blue */
+}
+
+/* Adiciona uma pequena animação de hover nos botões */
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 120, 212, 0.2); /* Sombra com tom de azul no hover */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+  form {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+
+  button[mat-stroked-button] {
+    margin: 1rem;
+  }
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.login-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #0078d4;
+  margin-bottom: 16px;
+}
+
+.login-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #0078d4;
+}
+
+.login-header p {
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+}

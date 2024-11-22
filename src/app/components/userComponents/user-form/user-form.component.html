@@ -1,0 +1,96 @@
+<p>Create your User</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username" />
+    @if (userForm.get('username')?.hasError('required')) {
+    <mat-error>Username is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="first_name" />
+    @if (userForm.get('first_name')?.hasError('required')) {
+    <mat-error>First_name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="last_name" />
+    @if (userForm.get('last_name')?.hasError('required')) {
+    <mat-error>Last_name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    @if (userForm.get('email')?.hasError('required')) {
+    <mat-error>Email is required</mat-error>
+    } @else if (userForm.get('email')?.hasError('email')) {
+    <mat-error> Email is invalid </mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      [type]="hide() ? 'password' : 'text'"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="clickEvent($event)"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    @if (userForm.get('password')?.hasError('required')) {
+      <mat-error>Password is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Confirm Password</mat-label>
+    <input
+      matInput
+      formControlName="password_confirm"
+      [type]="hide() ? 'password' : 'text'"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="clickEvent($event)"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    @if (userForm.get('password_confirm')?.hasError('required')) {
+      <mat-error>Password Confirm is required</mat-error>
+    }
+  </mat-form-field>
+
+  <button
+    mat-flat-button 
+    type="submit"
+    [disabled]="!userForm.valid"
+  >
+    Register
+  </button>
+</form>
+<button
+  mat-stroked-button
+  type="submit"
+  [routerLink]="['']"
+  routerLinkActive="router-link-active"
+>
+  Login
+</button>

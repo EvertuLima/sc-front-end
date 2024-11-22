@@ -1,0 +1,63 @@
+/* Estilos para footer.component.css */
+.footer-toolbar {
+  background-color: #001b3f;
+  color: white;
+  height: 48px; /* Um pouco menor que o navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 16px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Adicionando alguns elementos extras */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .footer-toolbar {
+    height: 40px;
+    padding: 0 8px;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+  }
+  
+  .footer-links {
+    gap: 16px;
+    font-size: 0.8rem;
+  }
+}

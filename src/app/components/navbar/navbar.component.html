@@ -1,0 +1,59 @@
+<mat-toolbar color="primary" class="navbar-toolbar">
+  <span class="title">
+    <mat-icon>school</mat-icon>
+    <span>Smart Campus</span>
+  </span>
+  <span class="spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button
+      mat-menu-item
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+    >
+    <mat-icon>home</mat-icon>
+      Home
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/user/profile']"
+      routerLinkActive="router-link-active"
+    >
+    <mat-icon>person</mat-icon>
+      Profile
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/rooms']"
+      routerLinkActive="router-link-active"
+    >
+      Rooms
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/items']"
+      routerLinkActive="router-link-active"
+    >
+      Items
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/create-room']"
+      routerLinkActive="router-link-active"
+    >
+      Create Room
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/create-item']"
+      routerLinkActive="router-link-active"
+    >
+      Create Item
+    </button>
+  </mat-menu>
+
+  <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+</mat-toolbar>
