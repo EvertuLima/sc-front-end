@@ -14,7 +14,7 @@
       [routerLink]="['/home']"
       routerLinkActive="router-link-active"
     >
-    <mat-icon>home</mat-icon>
+      <mat-icon>home</mat-icon>
       Home
     </button>
     <button
@@ -22,21 +22,23 @@
       [routerLink]="['/user/profile']"
       routerLinkActive="router-link-active"
     >
-    <mat-icon>person</mat-icon>
-      Profile
+      <mat-icon>perm_identity</mat-icon>
+      Perfil
     </button>
     <button
       mat-menu-item
       [routerLink]="['/rooms']"
       routerLinkActive="router-link-active"
     >
-      Rooms
+      <mat-icon>list</mat-icon>
+      Salas
     </button>
     <button
       mat-menu-item
       [routerLink]="['/items']"
       routerLinkActive="router-link-active"
     >
+      <mat-icon>list</mat-icon>
       Items
     </button>
     <button
@@ -55,5 +57,8 @@
     </button>
   </mat-menu>
 
-  <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  <button mat-raised-button color="warn" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Sair
+  </button>
 </mat-toolbar>

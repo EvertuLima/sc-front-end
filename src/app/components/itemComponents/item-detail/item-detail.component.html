@@ -1,0 +1,80 @@
+<button mat-stroked-button (click)="goBackRoom()">
+  Ir Para Sala
+</button>
+
+<div class="item-details-container">
+  @if (item$ | async; as item) {
+    @if (item) {
+      <div class="item-header">
+        <h2 class="item-name">Sobre o Item</h2>
+      </div>
+      
+      <div class="item-info">
+        @if (item.inventory_number) {
+          <div class="item-details">
+            <div class="item-details-section">
+              <span class="item-details-label">Número de Inventário</span>
+              <p class="item-details-value">{{ item.inventory_number }}</p>
+            </div>
+          </div>
+        }
+
+        <div class="item-details">
+          <div class="item-details-section">
+            <span class="item-details-label">Descrição</span>
+            <p class="item-details-value">{{ item.description }}</p>
+          </div>
+        </div>
+
+        @if (item.brand) {
+          <div class="item-details">
+            <div class="item-details-section">
+              <span class="item-details-label">Marca</span>
+              <p class="item-details-value">{{ item.brand }}</p>
+            </div>
+          </div>
+        }
+
+        @if (item.model) {
+          <div class="item-details">
+            <div class="item-details-section">
+              <span class="item-details-label">Modelo</span>
+              <p class="item-details-value">{{ item.model }}</p>
+            </div>
+          </div>
+        }
+
+        @if (item.condition) {
+          <div class="item-details">
+            <div class="item-details-section">
+              <span class="item-details-label">Condição</span>
+              <p class="item-details-value">{{ item.condition }}</p>
+            </div>
+          </div>
+        }
+
+        @if (item.notes) {
+          <div class="item-details">
+            <div class="item-details-section">
+              <span class="item-details-label">Notas</span>
+              <p class="item-details-value">{{ item.notes }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="not-found-message">
+        Item não encontrado
+      </div>
+    }
+  } @else {
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+</div>
+
+<app-comment-list 
+  [comments$]="comments$" 
+  [itemId]="itemId()">
+</app-comment-list>

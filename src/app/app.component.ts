@@ -11,6 +11,7 @@ import { WebSocketService } from './services/webSocketService/web-socket.service
 import { loadCurrentUser } from './store/userStore/user.actions';
 import { selectCurrentUser } from './store/userStore/user.selectors';
 import { CommonModule } from '@angular/common';
+import { loadComments } from './store/commentStore/comment.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   private socketSubscription = new Subscription();
-  userLoggedIn$ = new Observable<boolean>;
+  userLoggedIn$ = new Observable<boolean>();
 
   constructor(
     private store: Store,
@@ -29,9 +30,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userLoggedIn$ = this.store.select(selectCurrentUser).pipe(
-      map(user => !!user)
-    );
+    this.userLoggedIn$ = this.store
+      .select(selectCurrentUser)
+      .pipe(map((user) => !!user));
     // Certifique-se de que estamos no lado do cliente
     if (typeof window !== 'undefined' && this.userLoggedIn$) {
       this.store.dispatch(loadCurrentUser());
@@ -40,7 +41,6 @@ export class AppComponent implements OnInit {
       this.socketSubscription = this.webSocketService
         .onMessage()
         .subscribe((message) => {
-          // console.log('Mensagem recebida via WebSocket:', message);
           if (message.type === 'rooms_updated') {
             this.store.dispatch(loadRooms());
           }
@@ -54,6 +54,15 @@ export class AppComponent implements OnInit {
           // console.log('Mensagem recebida via WebSocket:', message);
           if (message.type === 'components_updated') {
             this.store.dispatch(loadItems());
+          }
+        });
+
+      this.store.dispatch(loadComments());
+      this.socketSubscription = this.webSocketService
+        .onMessage()
+        .subscribe((message) => {
+          if (message.type === 'comments_updated') {
+            this.store.dispatch(loadComments());
           }
         });
     }

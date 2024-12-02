@@ -1,52 +1,52 @@
 <div class="item-form-container">
   <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
-      <mat-label>Inventory Number</mat-label>
+      <mat-label>Tombo</mat-label>
       <input matInput formControlName="inventory_number" />
       @if (itemForm.get('inventory_number')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 65 </mat-error>
+      <mat-error> O comprimento máximo é 65 </mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
+      <mat-label>Descrição</mat-label>
       <textarea matInput formControlName="description" required></textarea>
       @if (itemForm.get('description')?.hasError('required')) {
-      <mat-error> Description is required </mat-error>
+      <mat-error> Descrição é necessária </mat-error>
       } @else if (itemForm.get('description')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 254 </mat-error>
+      <mat-error> O comprimento máximo é 254 </mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Brand</mat-label>
+      <mat-label>Marca</mat-label>
       <input matInput formControlName="brand" />
       @if (itemForm.get('brand')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 65 </mat-error>
+      <mat-error> O comprimento máximo é 65 </mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Model</mat-label>
+      <mat-label>Modelo</mat-label>
       <input matInput formControlName="model" />
       @if (itemForm.get('model')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 65 </mat-error>
+      <mat-error> O comprimento máximo é 65 </mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Condition</mat-label>
+      <mat-label>Condição</mat-label>
       <input matInput formControlName="condition" />
       @if (itemForm.get('condition')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 65 </mat-error>
+      <mat-error> O comprimento máximo é 65 </mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Notes</mat-label>
+      <mat-label>Notas</mat-label>
       <input matInput formControlName="notes" />
       @if (itemForm.get('notes')?.hasError('maxlength')) {
-      <mat-error> Maximum length is 65 </mat-error>
+      <mat-error> O comprimento máximo é 65 </mat-error>
       }
     </mat-form-field>
 

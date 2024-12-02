@@ -29,6 +29,8 @@ import { RegisterUserEffects } from './store/registerUserStore/registerUser.effe
 import { userReducer, metaUserReducers } from './store/userStore/user.reducers';
 import { UserEffects } from './store/userStore/user.effects';
 import { metaStoreReducers } from './store/store.reducer';
+import { commentReducer } from './store/commentStore/comment.reducers';
+import { CommentEffects } from './store/commentStore/comment.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,12 +46,14 @@ export const appConfig: ApplicationConfig = {
         items: itemReducer,
         auth: authReducer,
         registerUser: registerUserReducer,
+        comments: commentReducer,
       },
       { metaReducers: metaStoreReducers }
     ),
     provideState({ name: 'rooms', reducer: roomReducer }),
     provideState({ name: 'items', reducer: itemReducer }),
     provideState({ name: 'registerUser', reducer: registerUserReducer }),
+    provideState({ name: 'comments', reducer: commentReducer }),
     provideState('auth', authReducer, { metaReducers: metaAuthReducers }),
     provideState('user', userReducer, { metaReducers: metaUserReducers }),
     provideEffects([
@@ -58,6 +62,7 @@ export const appConfig: ApplicationConfig = {
       AuthEffects,
       RegisterUserEffects,
       UserEffects,
+      CommentEffects,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -31,7 +31,7 @@ export class ItemFormComponent implements OnInit {
   @Input() itemToEdit?: ItemModel;
 
   get buttonMsg(): string {
-    return this.itemToEdit?.id ? 'Update Item' : 'Create Item';
+    return this.itemToEdit?.id ? 'Atualizar Item' : 'Criar Item';
   }
 
   constructor(
@@ -40,7 +40,7 @@ export class ItemFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.itemToEdit)
+    // console.log(this.itemToEdit)
     this.itemForm = this.formBuilder.group({
       inventory_number: ['', [Validators.maxLength(65)]],
       description: ['', [Validators.required, Validators.maxLength(254)]],
@@ -62,7 +62,7 @@ export class ItemFormComponent implements OnInit {
         this.store.dispatch(
           updateItem({
             itemId: this.itemToEdit.id,
-            updatedData: { ...this.itemToEdit, ...this.itemForm.value },
+            updatedData: { ...this.itemForm.value, ...this.itemToEdit },
           })
         );
       } else {

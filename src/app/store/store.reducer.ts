@@ -6,6 +6,7 @@ import { ItemState } from './itemStore/item.reducers';
 import { AuthState } from './authStore/auth.reducers';
 import { RegisterUserState } from './registerUserStore/registerUser.reducers';
 import { UserState } from './userStore/user.reducers';
+import { CommentState } from './commentStore/comment.reducers';
 
 export interface State {
   rooms: RoomState;
@@ -13,6 +14,7 @@ export interface State {
   auth: AuthState;
   registerUser: RegisterUserState;
   user: UserState;
+  comments: CommentState
 }
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {

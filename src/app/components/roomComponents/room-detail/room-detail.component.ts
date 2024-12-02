@@ -19,6 +19,7 @@ import { selectCurrentUser } from '../../../store/userStore/user.selectors';
 import { deleteItem } from '../../../store/itemStore/item.actions';
 import { ConfirmationDeleteItemDialogComponent } from '../../../messages/confirmation-delete-item-dialog/confirmation-delete-item-dialog.component';
 import { ItemFormComponent } from "../../itemComponents/item-form/item-form.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-detail',
@@ -45,6 +46,7 @@ export class RoomDetailComponent implements OnInit {
     'model',
     'condition',
     'notes',
+    'detail',
   ];
   
   actionColumns: string[] = ['delete', 'update'];
@@ -62,6 +64,7 @@ export class RoomDetailComponent implements OnInit {
   constructor(
     private store: Store,
     public dialog: MatDialog,
+    private router: Router,
   ) {
     this.room$ = new Observable();
     this.items$ = new Observable();
@@ -69,8 +72,8 @@ export class RoomDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.room$ = this.store.select(selectRoomById(this.roomId()));
-    this.items$ = this.store.select(selectItemsByRoom(this.roomId()));
+    this.room$ = this.store.select(selectRoomById(+this.roomId()));
+    this.items$ = this.store.select(selectItemsByRoom(+this.roomId()));
 
     this.items$.subscribe((items) => {
       this.dataSource.data = items;
@@ -126,7 +129,7 @@ export class RoomDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDeleteItemDialogComponent, {
       width: '400px',
       height: '200px',
-      data: { message: 'Are you sure you want to delete this item?' }
+      data: { message: 'Tem certeza de que deseja excluir este item?' }
     });
   
     dialogRef.afterClosed().subscribe(result => {
@@ -138,5 +141,9 @@ export class RoomDetailComponent implements OnInit {
 
   onFormSubmitted() {
     this.closeItemForm();
+  }
+
+  goToItemDetail(itemId: number): void {
+    this.router.navigate(['/items', itemId]);
   }
 }

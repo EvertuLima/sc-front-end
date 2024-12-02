@@ -11,7 +11,7 @@ export const selectRooms = createSelector(
 
 export const selectRoomById = (roomId: number) =>
   createSelector(selectRooms, (rooms: RoomModel[]) =>
-    rooms.filter((rooms) => rooms.id == roomId)[0]
+    rooms.filter((rooms) => rooms.id === roomId)[0]
   );
 
 // export const selectRoomsByResponsible = (responsibleId: number) =>

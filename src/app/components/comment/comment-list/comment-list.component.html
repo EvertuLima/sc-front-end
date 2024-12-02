@@ -1,0 +1,89 @@
+<div class="comments-section">
+  <div class="comments-header">
+    <div class="comments-header-content">
+      <div class="comments-title-container">
+        @if (!allowCreateComment) {
+          <h3>Seus Comentários</h3>
+        } @else {
+          <h3>Comentários</h3>
+        }
+        <span class="comments-count">{{ (comments$ | async)?.length }}</span>
+      </div>
+      @if (allowCreateComment) {
+        <button mat-mini-fab color="primary" (click)="openCreateCommentForm()">
+          <mat-icon>comment</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (comments$ | async; as comments) {
+    @if (comments.length > 0) {
+      <div class="comment-list">
+        @for (comment of comments; track comment.id) {
+          <mat-card 
+            class="comment-card" 
+            [class.highlight]="!allowCreateComment"
+            (mouseenter)="onMouseEnter($event)"
+            (mouseleave)="onMouseLeave($event)"
+            (click)="onCommentCardClick(comment)"
+          >
+            <mat-card-header>
+              <mat-card-header class="comment-header-content">
+                <div class="comment-username">
+                  @if (!allowCreateComment) {
+                    {{ comment.component_description }}
+                  } @else {
+                    {{ comment.user_name }}
+                  }
+                </div>
+                <div class="comment-metadata">
+                  @if (comment.created_at !== comment.updated_at) {
+                    <span class="comment-edited-indicator" matTooltip="Editado em {{ comment.updated_at }}">
+                      (editado)
+                    </span>
+                  }
+                  <div class="comment-date">{{ comment.updated_at }}</div>
+                </div>
+              </mat-card-header>
+            </mat-card-header>
+
+            <mat-card-content>
+              <p>{{ comment.comment }}</p>
+            </mat-card-content>
+
+            <mat-card-actions class="comment-actions">
+              @if ((currentUserId$ | async) === comment.user) {
+                <button mat-icon-button color="primary" (click)="openEditCommentForm(comment)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="onDeleteComment(comment.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              }
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <div class="no-comments">
+        Nenhum comentário encontrado
+      </div>
+    }
+  }
+
+  @if (formMode !== null && commentToEdit) {
+    <div class="form-overlay" (click)="closeCommentForm()">
+      <div class="form-container" (click)="$event.stopPropagation()">
+        <button mat-icon-button class="close-form-btn" (click)="closeCommentForm()">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <app-comment-form
+          [commentToEdit]="commentToEdit"
+          (formSubmitted)="onFormSubmitted()"
+        ></app-comment-form>
+      </div>
+    </div>
+  }
+</div>

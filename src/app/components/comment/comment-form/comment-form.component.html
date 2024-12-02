@@ -1,0 +1,20 @@
+<form class="comment-form-container" [formGroup]="commmentForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Comentário</mat-label>
+    <textarea matInput formControlName="comment"></textarea>
+    @if (commmentForm.get('comment')?.hasError('maxlength')) {
+      <mat-error> O comprimento máximo é 254 </mat-error>
+    } @else if (commmentForm.get('comment')?.hasError('minlength')) {
+      <mat-error> O comprimento mínimo é 3 </mat-error>
+    }
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!commmentForm.valid"
+  >
+    {{ buttonMsg }}
+  </button>
+</form>

@@ -10,6 +10,7 @@ import { UserProfileComponent } from './components/userComponents/user-profile/u
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { HomeComponent } from './components/home/home.component';
+import { ItemDetailComponent } from './components/itemComponents/item-detail/item-detail.component';
 
 
 
@@ -51,6 +52,10 @@ export const routes: Routes = [
       {
         path: 'items',
         component: ItemListComponent,
+      },
+      {
+        path: 'items/:itemId',
+        component: ItemDetailComponent,
       },
       {
         path: 'user/profile',

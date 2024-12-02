@@ -17,5 +17,13 @@
     <div class="rooms-section">
       <app-room-list [userId]="user.id"></app-room-list>
     </div>
+
+    <div class="comments-section">
+      <app-comment-list 
+        [comments$]="myComments$" 
+        [itemId]="0"
+        [allowCreateComment]="false">
+      </app-comment-list>
+    </div>
   }
 </div>

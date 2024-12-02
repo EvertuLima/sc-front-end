@@ -9,6 +9,12 @@ export const selectItems = createSelector(
   (state) => state.items
 );
 
+export const selectItemById = (itemId: number) => 
+  createSelector(
+    selectItems,
+    (items: ItemModel[]) => items.find(item => item.id === itemId)
+  );
+
 export const selectItemsByRoom = (roomId: number) => 
   createSelector(
     selectItems,

@@ -5,15 +5,15 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmited()">
   <mat-form-field>
-    <mat-label>User</mat-label>
+    <mat-label>Usuário</mat-label>
     <input matInput formControlName="username" />
     @if (loginForm.get('username')?.hasError('required')) {
-    <mat-error>User name is invalid</mat-error>
+    <mat-error>Nome de usuário inválido</mat-error>
     }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Enter your password</mat-label>
+    <mat-label>Digite sua senha</mat-label>
     <input
       matInput
       formControlName="password"
@@ -30,11 +30,11 @@
       <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
     @if (loginForm.get('password')?.hasError('required')) {
-    <mat-error>Password is invalid</mat-error>
+    <mat-error>A senha é inválida</mat-error>
     }
   </mat-form-field>
 
-  <button mat-flat-button type="submit" [disabled]="!loginForm.valid">Logar</button>
+  <button mat-flat-button type="submit" [disabled]="!loginForm.valid">Entrar</button>
 </form>
 <button
   mat-stroked-button
@@ -42,5 +42,5 @@
   [routerLink]="['/user/register']"
   routerLinkActive="router-link-active"
 >
-  Register
+  Registar
 </button>
