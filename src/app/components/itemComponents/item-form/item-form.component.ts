@@ -62,7 +62,7 @@ export class ItemFormComponent implements OnInit {
         this.store.dispatch(
           updateItem({
             itemId: this.itemToEdit.id,
-            updatedData: { ...this.itemForm.value, ...this.itemToEdit },
+            updatedData: { ...this.itemForm.value},
           })
         );
       } else {

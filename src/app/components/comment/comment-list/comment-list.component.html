@@ -54,10 +54,10 @@
 
             <mat-card-actions class="comment-actions">
               @if ((currentUserId$ | async) === comment.user) {
-                <button mat-icon-button color="primary" (click)="openEditCommentForm(comment)">
+                <button mat-icon-button color="primary" (click)="$event.stopPropagation(); openEditCommentForm(comment)">
                   <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDeleteComment(comment.id)">
+                <button mat-icon-button color="warn" (click)="$event.stopPropagation(); onDeleteComment(comment.id)">
                   <mat-icon>delete</mat-icon>
                 </button>
               }
